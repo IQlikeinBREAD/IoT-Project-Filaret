@@ -1,0 +1,12 @@
+C:\Users\filar\Desktop\IoT\ConsoleApp1\Device\bin\Debug\net7.0\Device.deps.json
+C:\Users\filar\Desktop\IoT\ConsoleApp1\Device\bin\Debug\net7.0\Device.dll
+C:\Users\filar\Desktop\IoT\ConsoleApp1\Device\bin\Debug\net7.0\Device.pdb
+C:\Users\filar\Desktop\IoT\ConsoleApp1\Device\obj\Debug\net7.0\Device.csproj.AssemblyReference.cache
+C:\Users\filar\Desktop\IoT\ConsoleApp1\Device\obj\Debug\net7.0\Device.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\filar\Desktop\IoT\ConsoleApp1\Device\obj\Debug\net7.0\Device.AssemblyInfoInputs.cache
+C:\Users\filar\Desktop\IoT\ConsoleApp1\Device\obj\Debug\net7.0\Device.AssemblyInfo.cs
+C:\Users\filar\Desktop\IoT\ConsoleApp1\Device\obj\Debug\net7.0\Device.csproj.CoreCompileInputs.cache
+C:\Users\filar\Desktop\IoT\ConsoleApp1\Device\obj\Debug\net7.0\Device.dll
+C:\Users\filar\Desktop\IoT\ConsoleApp1\Device\obj\Debug\net7.0\refint\Device.dll
+C:\Users\filar\Desktop\IoT\ConsoleApp1\Device\obj\Debug\net7.0\Device.pdb
+C:\Users\filar\Desktop\IoT\ConsoleApp1\Device\obj\Debug\net7.0\ref\Device.dll

@@ -1,0 +1,12 @@
+C:\Users\filar\Desktop\IoT\ServiceSDKDemo\ClassLibrary1\bin\Debug\net7.0\ServiceSDKDemo.lib.deps.json
+C:\Users\filar\Desktop\IoT\ServiceSDKDemo\ClassLibrary1\bin\Debug\net7.0\ServiceSDKDemo.lib.dll
+C:\Users\filar\Desktop\IoT\ServiceSDKDemo\ClassLibrary1\bin\Debug\net7.0\ServiceSDKDemo.lib.pdb
+C:\Users\filar\Desktop\IoT\ServiceSDKDemo\ClassLibrary1\obj\Debug\net7.0\ServiceSDKDemo.lib.csproj.AssemblyReference.cache
+C:\Users\filar\Desktop\IoT\ServiceSDKDemo\ClassLibrary1\obj\Debug\net7.0\ServiceSDKDemo.lib.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\filar\Desktop\IoT\ServiceSDKDemo\ClassLibrary1\obj\Debug\net7.0\ServiceSDKDemo.lib.AssemblyInfoInputs.cache
+C:\Users\filar\Desktop\IoT\ServiceSDKDemo\ClassLibrary1\obj\Debug\net7.0\ServiceSDKDemo.lib.AssemblyInfo.cs
+C:\Users\filar\Desktop\IoT\ServiceSDKDemo\ClassLibrary1\obj\Debug\net7.0\ServiceSDKDemo.lib.csproj.CoreCompileInputs.cache
+C:\Users\filar\Desktop\IoT\ServiceSDKDemo\ClassLibrary1\obj\Debug\net7.0\ServiceSDKDemo.lib.dll
+C:\Users\filar\Desktop\IoT\ServiceSDKDemo\ClassLibrary1\obj\Debug\net7.0\refint\ServiceSDKDemo.lib.dll
+C:\Users\filar\Desktop\IoT\ServiceSDKDemo\ClassLibrary1\obj\Debug\net7.0\ServiceSDKDemo.lib.pdb
+C:\Users\filar\Desktop\IoT\ServiceSDKDemo\ClassLibrary1\obj\Debug\net7.0\ref\ServiceSDKDemo.lib.dll
