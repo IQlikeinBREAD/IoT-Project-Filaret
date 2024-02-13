@@ -14,11 +14,17 @@ async def rep_twin(device_client,device):
                                                     "Errors": device.device_error }}
     device_client.patch_twin_properties(reported_properties)
 
+async def prod_rate_com(twin_patch,device_list):
+    for device in device_list:
+        name_device = device.get_name_device()
+        if name_device in twin_patch.keys() and twin_patch[name_device] is not None and twin_patch[name_device]["ProductionRate"] != device.production_rate:
+            await device.set_prod_rate()
+
 def twin_patch_handler(twin_patch,device_list):
     try:
         print("Twin patch received")
         print(twin_patch)
-        # asyncio.run(compare_production_rates(twin_patch, lst_devices))
+        asyncio.run(prod_rate_com(twin_patch, device_list))
     except Exception as e:
         print(f"{str(e)}")
 
