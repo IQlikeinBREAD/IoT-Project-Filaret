@@ -44,6 +44,12 @@ async def main():
     CONNECTION_STRING = "HostName=IoT-uni-filaret6.azure-devices.net;DeviceId=Test-Device;SharedAccessKey=su85C/QkrwIfSsc+j1EX0KRGY/tD4VJcNAIoTAnvDlk="
     iot_client = IoTHubDeviceClient.create_from_connection_string(CONNECTION_STRING)
     iot_client.connect()
+    
+    twin = iot_client.get_twin()['reported']
+    del twin["$version"]
+    for key, value in twin.items():
+        twin[key] = None
+    iot_client.patch_twin_reported_properties(twin)
 
     while True:
         #Pobieramy dane
