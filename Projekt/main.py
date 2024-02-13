@@ -14,7 +14,23 @@ async def rep_twin(device_client,device):
                                                     "Errors": device.device_error }}
     device_client.patch_twin_properties(reported_properties)
 
-    
+def twin_patch_handler(twin_patch,device_list):
+    try:
+        print("Twin patch received")
+        print(twin_patch)
+        # asyncio.run(compare_production_rates(twin_patch, lst_devices))
+    except Exception as e:
+        print(f"{str(e)}")
+
+
+async def desired_twin_receive(client):
+
+    try:
+        client.on_twin_desired_properties_patch_received = twin_patch_handler
+    except Exception as e:
+        print(f"{str(e)}")
+
+
 async def main():
     client = Client("opc.tcp://localhost:4840/")
     await client.connect()
