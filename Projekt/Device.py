@@ -1,4 +1,5 @@
 import asyncio
+from asyncua import Client,ua
 
 class Device:
     def __init__(self,client,node):
@@ -34,10 +35,13 @@ class Device:
             "device_errors":self.device_error
         }
     
-    def get_errors(self):
+    async def get_errors(self):
         return self.device_error
     
-    def get_name_device(self):
+    async def get_name_device(self):
         return str(self.node)[7:]
     
+    async def set_prod_rate(self, value=10):
+        await self.client.set_values([self.client.get_node(f"{self.node}/ProductionRate")],
+                                [ua.DataValue(ua.Variant(int(self.production_rate - value), ua.VariantType.Int32))])
         
