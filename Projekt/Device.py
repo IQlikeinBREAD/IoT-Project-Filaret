@@ -13,12 +13,15 @@ class Device:
         self.device_error = None
 
     async def wpisywanie_danych(self):
+        {str(self.node)[7:]}
         self.production_status = await self.client.get_node(f"{self.node}/ProductionStatus").get_value()
         self.work_order_id = await self.client.get_node(f"{self.node}/WorkorderId").get_value()
         self.production_rate = await self.client.get_node(f"{self.node}/ProductionRate").get_value()
         self.good_count = await self.client.get_node(f"{self.node}/GoodCount").get_value()
         self.bad_count = await self.client.get_node(f"{self.node}/BadCount").get_value()
         self.temperature = await self.client.get_node(f"{self.node}/Temperature").get_value()
+        self.device_error= await self.client.get_node(f"{self.node}/DeviceError").get_value()
+        self.device_error = [int(num)for num in bin(self.device_error)[2:].zfill(4)]
 
     def data(self):
         return{
@@ -28,14 +31,13 @@ class Device:
             "good_count": self.good_count,
             "bad_count": self.bad_count,
             "temperature": self.temperature,
+            "device_errors":self.device_error
         }
-    async def device_errors(self):
-        self.device_error = await self.client.get_node(f"{self.node}/DeviceError").getvalue()
-        binary_error = f'{self.device_error:04b}'
-        binary_error_list = [int(bit) for bit in binary_error]
-        while len(binary_error_list) < 4:  # Додавання нулів, якщо довжина списку менше 4
-            binary_error_list.insert(0, 0)
-        return binary_error_list
-        
+    
+    def get_errors(self):
+        return self.device_error
+    
+    def get_name_device(self):
+        return str(self.node)[7:]
     
         
