@@ -46,5 +46,9 @@ class Device:
                                 [ua.DataValue(ua.Variant(int(self.production_rate - value), ua.VariantType.Int32))])
     
     async def emergency_stop(self):
-        EmSt = self.client.get_node(f"{self.node}/EmergencyStop")
-        await self.node.call_method(EmSt)
+        emer_Stop = self.client.get_node(f"{self.node}/EmergencyStop")
+        await self.node.call_method(emer_Stop)
+
+    async def reset_errors(self):
+        reset = self.client.get_node(f"{self.node}/ResetErrorStatus")
+        await self.node.call_method(reset)
