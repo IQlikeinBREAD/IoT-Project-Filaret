@@ -10,8 +10,11 @@ async def send_to_iot(device_client, device):
     device_client.send_message(message)
 
 async def rep_twin(device_client,device):
-    reported_properties = {"Device" + str(machine.node)[-1]:}
+    reported_properties = {device.get_name_device():{"ProductRate": device.production_rate,
+                                                    "Errors": device.device_error }}
+    device_client.patch_twin_properties(reported_properties)
 
+    
 async def main():
     client = Client("opc.tcp://localhost:4840/")
     await client.connect()
