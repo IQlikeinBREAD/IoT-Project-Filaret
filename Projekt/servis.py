@@ -35,3 +35,16 @@ async def clear_desired_twin(manager, device_id):
 
     twin_patch = Twin(properties=TwinProperties(desired=des))
     twin = manager.update_twin(device_id, twin_patch, twin.etag)
+
+async def clear_blob_storage(connection_str):
+    blob_container_names = ['device-err', 'temperature-info', 'kpi-production']
+
+    blob_service = BlobServiceClient.from_connection_string(connection_str)
+
+    for blob_container_name in blob_container_names:
+        try:
+            blob_service.delete_container(blob_container_name)
+        except:
+            pass
+
+    print("Blobs are cleared")
