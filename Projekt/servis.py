@@ -48,3 +48,15 @@ async def clear_blob_storage(connection_str):
             pass
 
     print("Blobs are cleared")
+
+async def run_device_method(manager, method_name, dev_name):
+    cd = CloudToDeviceMethod(method_name=method_name, payload={"DeviceName": dev_name})
+    manager.invoke_device_method("test_device", cd)
+
+
+async def run_emergency_stop(manager, dev_name):
+    await run_device_method(manager, "emergency_stop", dev_name)
+
+
+async def run_res_err_status(manager, dev_name):
+    await run_device_method(manager, "reset_err_status", dev_name)
