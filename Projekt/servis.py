@@ -11,3 +11,16 @@ async def receive_twin_reported(manager_client, device_id):
     print("Twin reported:")
     print(rep)
     return rep
+
+async def twin_desired(manager_client, device_id, reported):
+    desired_twin = {}
+
+    del reported["$metadata"]
+    del reported["$version"]
+
+    for key, value in reported.items():
+        desired_twin[key] = {"ProductionRate": value["ProductionRate"]}
+
+    twin = manager_client.get_twin(device_id)
+    twin_patch = Twin(properties=TwinProperties(desired=desired_twin))
+    twin = manager_client.update_twin(device_id, twin_patch, twin.etag)
