@@ -35,10 +35,10 @@ class Device:
             "device_errors":self.device_error
         }
     
-    async def get_errors(self):
+    def get_errors(self):
         return self.device_error
     
-    async def get_name_device(self):
+    def get_name_device(self):
         return str(self.node)[7:]
     
     async def set_prod_rate(self, value=10):
