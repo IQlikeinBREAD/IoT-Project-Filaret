@@ -1,0 +1,50 @@
+SELECT
+    device_name,
+    workorder_id,
+    AVG(CAST(good_count AS float) / CAST((good_count + bad_count) AS float)) * 100 AS KPI,
+    System.Timestamp() AS windEndTime
+INTO
+    [kpi-production]
+FROM
+    [IoT-uni-filaret6-1]
+TIMESTAMP BY
+    EventEnqueuedUtcTime
+GROUP BY
+    workorder_id,
+    device_name,
+    TumblingWindow(minute, 5);
+
+SELECT
+    device_name,
+    workorder_id,
+    System.Timestamp() AS windowEndTime,
+    AVG(temperature) AS AvgTemperature,
+    MIN(temperature) AS MinTemperature,
+    MAX(temperature) AS MaxTemperature
+INTO
+    [temperature-info]
+FROM
+    [IoT-uni-filaret6-1]
+TIMESTAMP BY
+    EventEnqueuedUtcTime
+GROUP BY
+    workorder_id,
+    device_name, 
+    HoppingWindow(minute, 5, 1);
+
+SELECT device_name, workorder_id, COUNT(*) AS ErrorCount,
+    System.Timestamp() AS windowEndTime
+INTO
+    [devices-error]
+FROM
+    [IoT-uni-filaret6-1]
+TIMESTAMP BY
+    EventEnqueuedUtcTime
+WHERE
+    device_error_state = 'true'
+GROUP BY
+    workorder_id,
+    device_name,
+    SlidingWindow(minute, 1)
+HAVING
+    COUNT(*) > 3;
