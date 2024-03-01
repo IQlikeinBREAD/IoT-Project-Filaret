@@ -117,3 +117,38 @@ async def read_blobs(manager, device_id, connection_str, date_err, date_kpi):
             pass
 
     return ret_date_err, ret_date_kpi
+
+
+async def main():
+    manager = IoTHubRegistryManager.from_connection_string("HostName=IoT-uni-filaret6.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=Lrdkmtc3oO+bt9fTdo1Z8gJvfmgpca2PMAIoTPljyG4=")
+    device_id = "Test-Device"
+    connection_str = "DefaultEndpointsProtocol=https;AccountName=fillstorage2023;AccountKey=u0VkkjFi4nkR8YGs5SGvO0P2VaFmWka1Jw+Wtmu6rFiia3dzEpEse0OPMd6iXyml13s5WjiRPwKN+AStP75L5A==;EndpointSuffix=core.windows.net"
+    date_err = ""
+    date_kpi = ""
+
+    await clear_blob_storage(connection_str)
+    await read_blobs(manager, device_id, connection_str, date_err, date_kpi)
+
+    try:
+        while True:
+            
+            twin_reported = await receive_twin_reported(manager, device_id)
+
+            
+            await twin_desired(manager,device_id, twin_reported)
+
+            
+            new_date_err, new_date_kpi = await read_blobs(manager,device_id,connection_str, old_date_err,old_date_kpi)
+
+            
+            old_date_err = new_date_err
+            old_date_kpi = new_date_kpi
+
+            await asyncio.sleep(1)  
+    except Exception as e:
+        print("Program is stopped")
+        print(f"Error: {e}")
+        
+
+if __name__ == "__main__":
+    asyncio.run(main())
